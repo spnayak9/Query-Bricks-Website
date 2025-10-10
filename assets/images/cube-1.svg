@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <!-- Dot pattern rotated & anchored at the cube center (200,200) for precise alignment -->
+    <pattern id="dotPattern" width="7" height="7" patternUnits="userSpaceOnUse"
+             patternTransform="rotate(-29.74488129694222 200 200)">
+      <circle cx="3.5" cy="3.5" r="1.4" fill="#b200ff" />
+    </pattern>
+  </defs>
+
+  <!-- Top face -->
+  <polygon points="200,40 340,120 200,200 60,120"
+           fill="none"
+           stroke="#b200ff"
+           stroke-width="4"
+           stroke-linejoin="round"
+           stroke-linecap="round"/>
+
+  <!-- Left face -->
+  <polygon points="60,120 200,200 200,360 60,280"
+           fill="none"
+           stroke="#b200ff"
+           stroke-width="4"
+           stroke-linejoin="round"
+           stroke-linecap="round"/>
+
+  <!-- Right face (dotted, now precisely rotated & anchored) -->
+  <polygon points="340,120 200,200 200,360 340,280"
+           fill="url(#dotPattern)"
+           stroke="#b200ff"
+           stroke-width="4"
+           stroke-linejoin="round"
+           stroke-linecap="round"/>
+</svg>
