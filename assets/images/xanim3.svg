@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  width="1024"
+  height="1024"
+  viewBox="0 0 1024 1024"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="XiOPC crisp neon animated geometric X logo">
+
+  <defs>
+    <!-- Animated neon gradient -->
+    <linearGradient
+      id="animatedNeonGradient"
+      x1="256"
+      y1="256"
+      x2="768"
+      y2="768"
+      gradientUnits="userSpaceOnUse">
+
+      <stop offset="0%" stop-color="#00FF85">
+        <animate
+          attributeName="stop-color"
+          dur="10s"
+          repeatCount="indefinite"
+          values="#00FF85;#00E5FF;#2979FF;#7C4DFF;#FF2BD6;#FF3D8B;#00FF85"/>
+      </stop>
+
+      <stop offset="50%" stop-color="#16C784">
+        <animate
+          attributeName="stop-color"
+          dur="10s"
+          repeatCount="indefinite"
+          values="#16C784;#00B8D9;#2962FF;#8E24AA;#E040FB;#FF4081;#16C784"/>
+      </stop>
+
+      <stop offset="100%" stop-color="#00A36C">
+        <animate
+          attributeName="stop-color"
+          dur="10s"
+          repeatCount="indefinite"
+          values="#00A36C;#00ACC1;#1E40FF;#651FFF;#C51162;#F50057;#00A36C"/>
+      </stop>
+    </linearGradient>
+
+    <!-- White moving highlight -->
+    <linearGradient
+      id="animatedHighlight"
+      x1="256"
+      y1="256"
+      x2="768"
+      y2="768"
+      gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="45%" stop-color="#FFFFFF" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Controlled outer glow: soft but not edge-blurring -->
+    <filter
+      id="softOuterGlow"
+      x="-25%"
+      y="-25%"
+      width="150%"
+      height="150%"
+      color-interpolation-filters="sRGB">
+      <feGaussianBlur
+        in="SourceGraphic"
+        stdDeviation="14"
+        result="outerBlur"/>
+      <feComponentTransfer in="outerBlur" result="outerGlow">
+        <feFuncA type="linear" slope="0.45"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="outerGlow"/>
+      </feMerge>
+    </filter>
+
+    <!-- Controlled medium glow -->
+    <filter
+      id="mediumGlow"
+      x="-20%"
+      y="-20%"
+      width="140%"
+      height="140%"
+      color-interpolation-filters="sRGB">
+      <feGaussianBlur
+        in="SourceGraphic"
+        stdDeviation="5"
+        result="mediumBlur"/>
+      <feComponentTransfer in="mediumBlur" result="mediumGlowResult">
+        <feFuncA type="linear" slope="0.55"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="mediumGlowResult"/>
+      </feMerge>
+    </filter>
+
+    <style>
+      <![CDATA[
+        .outer-glow {
+          stroke: url(#animatedNeonGradient);
+          stroke-width: 76;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          fill: none;
+          opacity: 0.35;
+          filter: url(#softOuterGlow);
+          stroke-dasharray: 900;
+          stroke-dashoffset: 900;
+          animation: drawLogo 1.8s ease-out forwards, glowBreath 3.6s ease-in-out 1.8s infinite;
+        }
+
+        .medium-glow {
+          stroke: url(#animatedNeonGradient);
+          stroke-width: 70;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          fill: none;
+          opacity: 0.45;
+          filter: url(#mediumGlow);
+          stroke-dasharray: 900;
+          stroke-dashoffset: 900;
+          animation: drawLogo 1.8s ease-out forwards, glowBreath 3.6s ease-in-out 1.8s infinite;
+        }
+
+        .main-stroke {
+          stroke: url(#animatedNeonGradient);
+          stroke-width: 64;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          fill: none;
+          opacity: 1;
+          stroke-dasharray: 900;
+          stroke-dashoffset: 900;
+          animation: drawLogo 1.8s ease-out forwards;
+        }
+
+        .highlight {
+          stroke: url(#animatedHighlight);
+          stroke-width: 14;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          fill: none;
+          opacity: 0;
+          stroke-dasharray: 120 780;
+          stroke-dashoffset: 900;
+          animation: highlightSweep 2.8s ease-in-out 2s infinite;
+        }
+
+        .highlight- {
+          stroke: url(#animatedHighlight);
+          stroke-width: 14;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          fill: none;
+          opacity: 0;
+          stroke-dasharray: 120 780;
+          stroke-dashoffset: 900;
+          animation: highlightSweep- 2.8s ease-in-out 2s infinite;
+        }
+
+        .right {
+          animation-delay: 0.18s;
+        }
+
+        @keyframes drawLogo {
+          0% {
+            stroke-dashoffset: 900;
+            opacity: 0;
+          }
+
+          20% {
+            opacity: 1;
+          }
+
+          100% {
+            stroke-dashoffset: 0;
+          }
+        }
+
+        @keyframes glowBreath {
+          0%, 100% {
+            opacity: 0.28;
+          }
+
+          50% {
+            opacity: 0.55;
+          }
+        }
+
+        @keyframes highlightSweep {
+          0% {
+            opacity: 0;
+            stroke-dashoffset: 900;
+          }
+
+          20% {
+            opacity: 0.75;
+          }
+
+          55% {
+            opacity: 0.55;
+          }
+
+          100% {
+            opacity: 0;
+            stroke-dashoffset: -900;
+          }
+        }
+
+        @keyframes highlightSweep- {
+          0% {
+            opacity: 0;
+            stroke-dashoffset: -900;
+          }
+
+          20% {
+            opacity: 0.75;
+          }
+
+          55% {
+            opacity: 0.55;
+          }
+
+          100% {
+            opacity: 0;
+            stroke-dashoffset: 900;
+          }
+        }
+      ]]>
+    </style>
+  </defs>
+
+  <!-- Transparent background. Works best on white or light-gray video backgrounds. -->
+
+  <!-- Left curve path geometry -->
+  <g>
+    <!-- Outer glow behind -->
+    <path
+      class="outer-glow"
+      d="M256 256
+         C340 350 468 472 492 592
+         C510 682 350 738 256 768"/>
+
+    <!-- Medium glow behind -->
+    <path
+      class="medium-glow"
+      d="M256 256
+         C340 350 468 472 492 592
+         C510 682 350 738 256 768"/>
+
+    <!-- Crisp main stroke on top -->
+    <path
+      class="main-stroke"
+      d="M256 256
+         C340 350 468 472 492 592
+         C510 682 350 738 256 768"/>
+
+    <!-- Moving sharp highlight -->
+    <path
+      class="highlight-"
+      d="M256 256
+         C340 350 468 472 492 592
+         C510 682 350 738 256 768"/>
+  </g>
+
+  <!-- Right curve path geometry -->
+  <g>
+    <!-- Outer glow behind -->
+    <path
+      class="outer-glow right"
+      d="M768 256
+         C674 286 514 342 532 432
+         C556 552 684 674 768 768"/>
+
+    <!-- Medium glow behind -->
+    <path
+      class="medium-glow right"
+      d="M768 256
+         C674 286 514 342 532 432
+         C556 552 684 674 768 768"/>
+
+    <!-- Crisp main stroke on top -->
+    <path
+      class="main-stroke right"
+      d="M768 256
+         C674 286 514 342 532 432
+         C556 552 684 674 768 768"/>
+
+    <!-- Moving sharp highlight -->
+    <path
+      class="highlight"
+      d="M768 256
+         C674 286 514 342 532 432
+         C556 552 684 674 768 768"/>
+  </g>
+
+</svg>
